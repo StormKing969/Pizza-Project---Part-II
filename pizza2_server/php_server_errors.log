@@ -1,0 +1,63 @@
+[25-Nov-2019 02:04:06 Europe/Berlin] server getDay
+[25-Nov-2019 02:05:41 Europe/Berlin] server getDay
+[25-Nov-2019 02:05:42 Europe/Berlin] server getDay
+[25-Nov-2019 02:57:32 Europe/Berlin] server error: {"error":{"text":Callable getToppings does not exist, "line":99, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\vendor\slim\slim\Slim\CallableResolver.php}}
+[25-Nov-2019 03:00:59 Europe/Berlin] server error: {"error":{"text":Callable getToppings does not exist, "line":99, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\vendor\slim\slim\Slim\CallableResolver.php}}
+[25-Nov-2019 03:01:00 Europe/Berlin] server error: {"error":{"text":Callable getToppings does not exist, "line":99, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\vendor\slim\slim\Slim\CallableResolver.php}}
+[25-Nov-2019 03:03:57 Europe/Berlin] server error: {"error":{"text":Callable getToppings does not exist, "line":99, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\vendor\slim\slim\Slim\CallableResolver.php}}
+[25-Nov-2019 03:03:58 Europe/Berlin] server error: {"error":{"text":Callable getToppings does not exist, "line":99, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\vendor\slim\slim\Slim\CallableResolver.php}}
+[25-Nov-2019 03:08:08 Europe/Berlin] server error: {"error":{"text":Cannot register two routes matching "/day" for method "GET", "line":86, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\vendor\nikic\fast-route\src\DataGenerator\RegexBasedAbstract.php}}
+[25-Nov-2019 03:09:40 Europe/Berlin] server error: {"error":{"text":Callable getToppings does not exist, "line":99, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\vendor\slim\slim\Slim\CallableResolver.php}}
+[25-Nov-2019 04:15:36 Europe/Berlin] server error: {"error":{"text":Callable getToppings does not exist, "line":99, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\vendor\slim\slim\Slim\CallableResolver.php}}
+[25-Nov-2019 04:15:38 Europe/Berlin] server error: {"error":{"text":Callable getToppings does not exist, "line":99, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\vendor\slim\slim\Slim\CallableResolver.php}}
+[25-Nov-2019 04:24:53 Europe/Berlin] server error: {"error":{"text":Callable getToppings does not exist, "line":99, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\vendor\slim\slim\Slim\CallableResolver.php}}
+[25-Nov-2019 04:30:54 Europe/Berlin] server error: {"error":{"text":Callable getToppings does not exist, "line":99, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\vendor\slim\slim\Slim\CallableResolver.php}}
+[25-Nov-2019 04:30:55 Europe/Berlin] server error: {"error":{"text":Callable getToppings does not exist, "line":99, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\vendor\slim\slim\Slim\CallableResolver.php}}
+[25-Nov-2019 04:35:15 Europe/Berlin] server getToppings
+[25-Nov-2019 04:37:56 Europe/Berlin] server getSizes
+[25-Nov-2019 04:39:54 Europe/Berlin] server getSizes
+[25-Nov-2019 04:44:06 Europe/Berlin] server getSizes
+[25-Nov-2019 04:44:25 Europe/Berlin] server getSizes
+[25-Nov-2019 04:44:35 Europe/Berlin] server getSizes
+[25-Nov-2019 04:44:53 Europe/Berlin] server getSizes
+[25-Nov-2019 04:45:23 Europe/Berlin] server getOrders
+[25-Nov-2019 04:52:59 Europe/Berlin] server getToppings
+[25-Nov-2019 05:01:13 Europe/Berlin] server getOrdersID
+[25-Nov-2019 05:01:18 Europe/Berlin] server getOrdersID
+[25-Nov-2019 05:01:25 Europe/Berlin] server getOrders
+[25-Nov-2019 05:04:18 Europe/Berlin] server getToppings
+[25-Nov-2019 05:04:19 Europe/Berlin] server getToppings
+[25-Nov-2019 05:04:22 Europe/Berlin] server getToppings
+[25-Nov-2019 05:04:25 Europe/Berlin] server getToppings
+[25-Nov-2019 05:04:35 Europe/Berlin] server getToppings
+[25-Nov-2019 05:04:36 Europe/Berlin] server getToppings
+[25-Nov-2019 05:04:52 Europe/Berlin] server getToppings
+[25-Nov-2019 05:05:01 Europe/Berlin] server getOrders
+[25-Nov-2019 15:13:48 Europe/Berlin] server getOrders
+[25-Nov-2019 15:13:48 Europe/Berlin] server error: {"error":{"text":SQLSTATE[HY000] [1044] Access denied for user 'pizza_user'@'localhost' to database 'pizzadb', "line":270, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\api\index.php}}
+[25-Nov-2019 15:13:52 Europe/Berlin] server getOrders
+[25-Nov-2019 15:13:52 Europe/Berlin] server error: {"error":{"text":SQLSTATE[HY000] [1044] Access denied for user 'pizza_user'@'localhost' to database 'pizzadb', "line":270, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\api\index.php}}
+[25-Nov-2019 15:14:03 Europe/Berlin] server getToppings
+[25-Nov-2019 15:14:03 Europe/Berlin] server error: {"error":{"text":SQLSTATE[HY000] [1044] Access denied for user 'pizza_user'@'localhost' to database 'pizzadb', "line":270, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\api\index.php}}
+[25-Nov-2019 15:14:11 Europe/Berlin] server getToppings
+[25-Nov-2019 15:14:11 Europe/Berlin] server error: {"error":{"text":SQLSTATE[HY000] [1044] Access denied for user 'pizza_user'@'localhost' to database 'pizzadb', "line":270, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\api\index.php}}
+[25-Nov-2019 15:14:35 Europe/Berlin] server getToppings
+[25-Nov-2019 15:14:35 Europe/Berlin] server error: {"error":{"text":SQLSTATE[HY000] [1044] Access denied for user 'pizza_user'@'localhost' to database 'pizzadb', "line":270, "file":D:\XAMPP\htdocs\cs637\wasajana\pizza2_server\api\index.php}}
+[25-Nov-2019 15:17:00 Europe/Berlin] server getToppings
+[25-Nov-2019 15:26:50 Europe/Berlin] server getOrdersID
+[25-Nov-2019 15:26:55 Europe/Berlin] server getOrdersID
+[25-Nov-2019 15:31:18 Europe/Berlin] server getOrdersID
+[25-Nov-2019 15:31:22 Europe/Berlin] server getOrdersID
+[25-Nov-2019 15:41:05 Europe/Berlin] server getOrdersID
+[25-Nov-2019 15:44:19 Europe/Berlin] server getOrdersID
+[25-Nov-2019 15:45:35 Europe/Berlin] server getOrdersID
+[25-Nov-2019 15:45:39 Europe/Berlin] server getOrdersID
+[25-Nov-2019 15:45:43 Europe/Berlin] server getOrdersID
+[25-Nov-2019 15:46:59 Europe/Berlin] server getOrdersID
+[25-Nov-2019 15:47:05 Europe/Berlin] server getOrdersID
+[25-Nov-2019 15:47:11 Europe/Berlin] server getOrdersID
+[25-Nov-2019 15:47:34 Europe/Berlin] server getOrders
+[25-Nov-2019 15:48:02 Europe/Berlin] server getOrdersID
+[25-Nov-2019 15:48:06 Europe/Berlin] server getOrders
+[25-Nov-2019 15:48:41 Europe/Berlin] server getOrders
+[25-Nov-2019 15:48:47 Europe/Berlin] server getOrdersID
