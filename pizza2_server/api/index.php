@@ -90,6 +90,7 @@ $app->get('/users', 'getUsers');
 $app->get('/orders/{id}', 'getOrdersID');
 $app->get('/orders', 'getOrders');
 $app->post('/orders', 'postOrders');
+$app->put('/orders/{id}', 'putOrdersID');
 
 // Take over response to URLs that don't match above rules, to avoid sending
 // HTML back in these cases
@@ -174,10 +175,10 @@ function getOrdersID(Request $request, Response $response, $args) {
     $statement = $db->prepare($query);
     $statement->bindValue(":id", $id);
     $statement->execute();
-    $orders = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $orders = $statement->fetch(PDO::FETCH_ASSOC);
     if ($orders === FALSE) {
         // can't find orders, so return not-found
-        $errorJSON = '{"error":{"text":orders not found}}';
+        $errorJSON = '{"error": "HTTP 404": "orders not found"}';
         error_log("server error $errorJSON");
         return $response->withStatus(404) // client error
                         ->write($errorJSON);     
@@ -203,7 +204,7 @@ function postOrders(Request $request, Response $response) {
     $orders = $request->getParsedBody();  // Slim does JSON_decode here
     error_log('server: parsed orders = ' . print_r($orders, true));
     if ($orders == NULL) { // parse failed (bad JSON)
-        $errorJSON = '{"error":{"text":"bad JSON in request"}}';
+        $errorJSON = '{"error":{"HTTP 400":"bad JSON in request"}}';
         error_log("server error $errorJSON");
         return $response->withStatus(400)  //client error
                         ->write($errorJSON);
@@ -214,7 +215,7 @@ function postOrders(Request $request, Response $response) {
     } catch (PDOException $e) {
         // if duplicate product, blame client--
         if (strstr($e->getMessage(), 'SQLSTATE[23000]')) {
-            $errorJSON = '{"error":{"text":' . $e->getMessage() .
+            $errorJSON = '{"error":{"HTTP 400":' . $e->getMessage() .
                     ', "line":' . $e->getLine() .
                     ', "file":' . $e->getFile() . '}}';
             error_log("server error $errorJSON");
@@ -224,16 +225,16 @@ function postOrders(Request $request, Response $response) {
             throw($e);  // generate HTTP 500 as usual         
         }
     }
-    $orders['orderID'] = $orderID;  // fix up id to current one
+    $orders['id'] = $orderID;  // fix up id to current one
     $JSONcontent = json_encode($orders);
     //echo $JSONcontent;  // wouldn't provide location header
-    $location = $request->getUri() . '/' . $orders["orderID"];
+    $location = $request->getUri() . '/' . $orders["id"];
     return $response->withHeader('Location', $location)
                     ->withStatus(200)
                     ->write($JSONcontent);
 }
 
-function addOrder($db, $category_id, $code, $name, $price) {
+function addOrder($db, $user_id, $size, $day, $status) {
     error_log("server addOrder");
     $query = 'INSERT INTO pizza_orders
                  (user_id, size, day, status)
@@ -250,6 +251,16 @@ function addOrder($db, $category_id, $code, $name, $price) {
     return $id;
 }
 
+function putOrdersID(Request $request, Response $response, $args) {
+    error_log("server putOrdersID");
+    $id = $args['id'];
+    $db = getConnection();
+    $query = 'UPDATE pizza_orders SET status=\'Baked\' WHERE id = :id';
+    $statement = $db->prepare($query);
+    $statement->bindValue(":id", $id);
+    $statement->execute();
+    $statement->closeCursor();
+}
 
 // set up to execute on XAMPP or at topcat.cs.umb.edu:
 // --set up a mysql user named pizza_user on your own system
