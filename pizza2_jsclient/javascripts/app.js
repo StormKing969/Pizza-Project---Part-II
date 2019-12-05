@@ -1,8 +1,8 @@
 "use strict";
 // avoid warnings on using fetch and Promise --
 /* global fetch, Promise */
-// use port 80, i.e., apache server for webservice execution 
-const baseUrl = "http://localhost/cs637/xxxx/pizza2_server/api";
+// use port 80, i.e., apache server for webservice execution
+const baseUrl = "http://localhost/cs637/wasajana/pizza2_server/api";
 // globals representing state of data and UI
 let selectedUser = 'none';
 let sizes = [];
@@ -27,18 +27,38 @@ function displaySizesToppingsOnHomeTab() {
     // loop through sizes, creating <li>s for them
     // with class=horizontal to get them to go across horizontally
     // similarly with toppings
+    // console.log("hello");
+    for (var i = 0; i < sizes.length; i++) {
+        var size = document.getElementById("sizes");
+        var x = sizes[i].size;
+        size.appendChild(document.createTextNode(x)); 
+        size.appendChild (document.createTextNode("\u00A0\u00A0\u00A0"));   
+    }
+    for (var i = 0; i < toppings.length; i++) {
+        var topp = document.getElementById("toppings");
+        var x = toppings[i].topping;
+        topp.appendChild(document.createTextNode(x + "\u00A0\u00A0"));    
+    }
 }
 
 function setupUserForm() {
     // find the element with id userselect
     // create <option> elements with value = username, for
-    // each user with the current user selected, 
+    // each user with the current user selected,
     // plus one for user "none".
     // Add a click listener that finds out which user was
     // selected, make it the "selectedUser", and fill it in the
     //  "username-fillin" spots in the HTML.
     //  Also change the visibility of the order-area
     // and redisplay the orders
+
+    var x = document.getElementById("userselect");
+    for (var i = 0; i < users.length; i++) {
+        var hor = document.createElement("option");
+        hor.text = users[i].username;
+        // hor.appendChild(document.createTextNode(x));
+        x.add(hor);
+    }
 }
 function setupAcknowledgeForm() {
     console.log("setupAckForm...");
@@ -73,18 +93,18 @@ function displayOrders() {
     // empty the ordertable, i.e., remove its content: we'll rebuild it
     // add class active to order-area
     // find the user_id of selectedUser via the users array
-    // find the in-progress orders for the user by filtering array 
+    // find the in-progress orders for the user by filtering array
     // orders on user_id and status
     // if there are no orders for user, make ordermessage be "none yet"
     //  and remove active from element id'd order-info
     // Otherwise, add class active to element order-info, make
-    //   ordermessage be "", and rebuild the order table 
+    //   ordermessage be "", and rebuild the order table
     // Finally, if there are Baked orders here, make sure that
     // ackform is active, else not active
 }
 
 // Let user click on one of two tabs, show its related contents
-// Contents for both tabs are in the HTML after initial setup, 
+// Contents for both tabs are in the HTML after initial setup,
 // but one part is not displayed because of display:none in its CSS
 // This implementation works for multiple two-tab setups because
 // it works from the clicked-on element and finds the related
@@ -118,7 +138,73 @@ function displaySizesToppingsOnOrderForm() {
     // Then find the spot for meat toppings, and meatless ones
     // and for each create an <input> element for a checkbox
     // and a <label> for each
+    for (var i = 0; i < sizes.length; i++) {
+        var size = document.getElementById("order-sizes");
+        var x = sizes[i].size;
+        size.appendChild(document.createTextNode(x + '\u00A0\u00A0\u00A0'));    
+    }
 
+
+    // for (var i = 0; i < toppings.length; i++) {
+    //     var topp = document.getElementById("meats");
+    //     var type = toppings[i].is_meat
+    //     if (type == 1) {
+    //         var x = toppings[i].topping;
+    //         topp.appendChild(document.createTextNode(x + '             '));
+    //     }    
+    // }
+
+    // for (var i = 0; i < toppings.length; i++) {
+    //     var topp = document.getElementById("meatlesses");
+    //     var type = toppings[i].is_meat
+    //     if (type == 0) {
+    //         var x = toppings[i].topping;
+    //         topp.appendChild(document.createTextNode(x + '             '));
+    //     }    
+    // }
+
+    document.querySelectorAll(".tabs.meat-meatless a span").forEach(function (element) {
+    // Code for page 139-140, to finish Chap. 4 Amazeriffic:
+        element.addEventListener("click", function () {
+            event.preventDefault();
+            document.querySelectorAll(".tabs.meat-meatless a span").forEach(function (element) {
+                element.classList.remove("active");
+            });
+            element.classList.add("active");
+            document.querySelector("#meats").innerHTML = "";
+            console.log("TAB clicked: " + element.innerHTML);
+            let content;
+            if (element.parentElement.matches(":nth-child(1)")) {
+                console.log("in newest");
+                // newest first, so we have to go through
+                // the array backwards
+                content = document.createElement("ul");
+                for (let i = toppings.length - 1; i >= 0; i--) {
+                    var topp = document.getElementById("meats");
+                    var type = toppings[i].is_meat
+                    if (type == 1) {
+                        var x = toppings[i].topping;
+                        content.innerHTML += "<li>" + x + "</li>";
+                    }   
+                }
+
+            } else
+            if (element.parentElement.matches(":nth-child(2)")) {
+                content = document.createElement("ul");
+                for (let i = toppings.length - 1; i >= 0; i--) {
+                    var topp = document.getElementById("meatlesses");
+                    var type = toppings[i].is_meat
+                    if (type == 0) {
+                        var x = toppings[i].topping;
+                        content.innerHTML += "<li>" + x + "</li>";
+                    }   
+                }
+            }
+            document.querySelector("#meats").append(content);
+        });
+    });
+    // simulate a click to fill in first-child content
+    // document.querySelector(".tabs a:first-child span").click(); // insta refresh
 }
 
 function setupOrderForm() {
@@ -193,7 +279,17 @@ function getToppings0() {
 }
 
 function getUsers() {
-
+let promise = fetch(
+            baseUrl + "/users",
+            {method: 'GET'}
+    )
+            .then(response => response.json())
+            .then(json => {
+                console.log("back from fetch: %O", json);
+                users = json;
+            })
+            .catch(error => console.error('error in getUsers:', error));
+    return promise;
 }
 
 function getOrders() {
