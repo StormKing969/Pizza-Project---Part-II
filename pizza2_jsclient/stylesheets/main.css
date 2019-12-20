@@ -89,6 +89,7 @@ td, th {
     font-size: 1.3rem;
 }
 /* for tab control of Home vs. Order Pizza, and topping choices in order_pizza: also see tabcontrol.js */
+.topping-tabs a span,
 .tabs a span {
     border-radius: 5px 5px 0 0;
     font-size: 1em;
@@ -99,16 +100,18 @@ td, th {
     background: #ddd;
     padding: .5em;
 }
+.topping-tabs a .active,
 .tabs a .active {
     background: #eee;
 }
-.tabs.meat-meatless a span  {
+.topping-tabs.meat-meatless a span  {
     background: #ccc;
 }
-.tabs.meat-meatless a .active {
+.topping-tabs.meat-meatless a .active {
     background: #ddd;
 }
 /* tab content control */
+.topping-tabContent,
 .tabContent {
     margin-bottom: 1em;
     border-radius: 0 5px 5px 5px;
@@ -116,6 +119,7 @@ td, th {
     display: none;
 }
 
+.topping-tabContent.active,
 .tabContent.active {
     display: block;
 }
