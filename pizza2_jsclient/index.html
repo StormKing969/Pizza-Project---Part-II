@@ -14,10 +14,10 @@
         <main>
             <div class="container">
                 <div class="tabs">
-                    <a href=""><span class="active">Home</span></a>
-                    <a href=""><span>Order Pizza</span></a>
+                    <a href=""><span class="active" data-type="home">Home</span></a>
+                    <a href=""><span data-type="order-pizza">Order Pizza</span></a>
                 </div>
-                <section class="tabContent active">
+                <section class="tabContent active home">
                     <h1>Welcome Student!</h1>
                     <h2>Available Sizes</h2>
                     <ul id="sizes">
@@ -25,14 +25,12 @@
                     <h2>Available Toppings</h2>
                     <ul id="toppings">
                     </ul>
-                    <form id = "userform" action="#" method="post"> 
                         <label>Username:</label>
                         <select id="userselect" name="user_id" 
                                             required="required">
                         </select>
-                        <input value="Select Your Username" type="submit"> 
+                        <input value="Select Your Username" id="userselectsubmit" type="button"> 
                         <br>
-                    </form>
                     <div id="order-area">
                         <h2>Orders in progress for 
                             <span id="username-fillin1"></span>
@@ -53,7 +51,7 @@
                 </section>
                 <!--active here to make everything show: final version should 
                 start off not active here , so order form doesn't show until requested-->
-                <section class="tabContent active">
+                <section class="tabContent order-pizza">
                     <h1>Build Your Pizza <span id="username-fillin2"></span>!!</h1>
                     <form id="orderform" action="#" method="get">
                         <h2>Pizza Size:</h2>
@@ -61,15 +59,15 @@
                         </div>
                         <div class="order-toppings">
                             <h2>Toppings:</h2>
-                            <div class="tabs meat-meatless">
+                            <div class="topping-tabs meat-meatless">
                                 <a href="#"><span class="active">Meat</span></a>
                                 <!--another class = active that's temporary--->
                                 <a href="#"><span class="active">Meatless</span></a>
                             </div>
-                            <div class="tabContent active" id = "meats"> 
+                            <div class="topping-tabContent active" id = "meats"> 
                             </div>
                              <!--another class = active that's temporary--->
-                            <div class="tabContent active" id = "meatlesses">
+                            <div class="topping-tabContent active" id = "meatlesses">
                             </div> 
                         </div>
                         <input class="submitbutton" type="submit" 
@@ -83,3 +81,4 @@
         <script src="javascripts/app.js"></script>
     </body>
 </html>
+
